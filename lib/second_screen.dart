@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SecondScreen extends StatelessWidget {
   final int counter;
@@ -21,11 +20,9 @@ class SecondScreen extends StatelessWidget {
             //Text('$counter', style: Theme.of(context).textTheme.headlineMedium),
             Text(
               '$counter',
-              style: GoogleFonts.poppins(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
+              style: Theme.of(context).textTheme.displaySmall?.copyWith(
                 color: Colors.indigoAccent,
+                fontStyle: FontStyle.italic,
                 letterSpacing: 2.0,
                 decoration: TextDecoration.underline,
               ),
