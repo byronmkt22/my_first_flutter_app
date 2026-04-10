@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'utils/counter_utils.dart';
 
 class SecondScreen extends StatelessWidget {
   final int counter;
@@ -21,7 +22,7 @@ class SecondScreen extends StatelessWidget {
             Text(
               '$counter',
               style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                color: Colors.indigoAccent,
+                color: getCounterColor(counter),
                 fontStyle: FontStyle.italic,
                 letterSpacing: 2.0,
                 decoration: TextDecoration.underline,

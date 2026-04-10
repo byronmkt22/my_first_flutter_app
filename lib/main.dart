@@ -1,6 +1,7 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'second_screen.dart';
+import 'utils/counter_utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -157,13 +158,6 @@ class CounterDisplay extends StatelessWidget {
 
   const CounterDisplay({super.key, required this.counter});
 
-  /// Returns a color based on the value of the counter: green for positive, red for negative, and grey for zero.
-  Color _counterColor() {
-    if (counter > 0) return Colors.green;
-    if (counter < 0) return Colors.red;
-    return Colors.grey;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -203,7 +197,9 @@ class CounterDisplay extends StatelessWidget {
         ),
         Text(
           'You have pushed the button this many times:',
-          style: TextStyle(color: _counterColor()),
+          // OLD: style: TextStyle(color: _counterColor()),
+          // NEW:
+          style: TextStyle(color: getCounterColor(counter)),
         ),
         const SizedBox(height: 16),
         Container(
@@ -215,13 +211,15 @@ class CounterDisplay extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.grey.shade100,
             border: Border.all(
-              color: _counterColor(),
+              color: getCounterColor(counter),
               width: 1,
             ), //1 pixel border
             borderRadius: BorderRadius.circular(16), //16 pixel radius
             boxShadow: [
               BoxShadow(
-                color: _counterColor().withValues(alpha: 0.3), //30% opacity
+                color: getCounterColor(
+                  counter,
+                ).withValues(alpha: 0.3), //30% opacity
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -229,9 +227,9 @@ class CounterDisplay extends StatelessWidget {
           ),
           child: Text(
             '$counter',
-            style: Theme.of(
-              context,
-            ).textTheme.headlineMedium?.copyWith(color: _counterColor()),
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              color: getCounterColor(counter),
+            ),
           ),
         ),
       ],
