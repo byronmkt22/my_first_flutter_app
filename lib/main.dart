@@ -2,6 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'second_screen.dart';
 import 'utils/counter_utils.dart';
+import 'framework_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,9 +37,7 @@ class MyApp extends StatelessWidget {
         //textTheme: GoogleFonts.poppinsTextTheme(),
         textTheme: GoogleFonts.playfairDisplayScTextTheme(),
       ),
-      home: const MyHomePage(
-        title: 'Mayrita... My First Flutter App Home Page',
-      ),
+      home: const FrameworkPage(),
     );
   }
 }
